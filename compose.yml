@@ -1,0 +1,53 @@
+version: "3"
+
+services:
+
+  postgres:
+    image: timescale/timescaledb:latest-pg12
+    restart: always
+    container_name: postgres
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_PASSWORD=3r1qxxu9oiHs2xSRsUr8
+      - PGDATA=/var/lib/postgresql/data/
+    volumes:
+      - ./db:/var/lib/postgresql/data/:rw
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U postgres -d postgres'"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+ 
+
+  # frontend:
+  #   container_name: frontend
+  #   depends_on:
+  #     - backend
+  #   build: ./mamba-ui
+  #   ports:
+  #     - "5173:80"
+  #   volumes:
+  #     - ./mamba-ui:/usr/share/nginx/html
+  
+  backend:
+    container_name: backend
+    build: ./omzbackend
+    depends_on:
+      'postgres':
+        condition: service_healthy
+        restart: true
+    ports:
+      - "8080:8080"
+    environment:
+      - DJANGO_APP_DB_ENGINE=postgresql
+      - DJANGO_APP_DB_NAME=postgres
+      - DJANGO_APP_DB_USER=postgres
+      - DJANGO_APP_DB_HOST=postgres
+      - DJANGO_APP_DB_PORT=5432
+      - DJANGO_APP_DB_PASSWORD=3r1qxxu9oiHs2xSRsUr8
+    volumes:
+      - ./mamba-backend:/mamba-backend
+    command: bash -c "./entrypoint.sh"
