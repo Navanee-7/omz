@@ -49,5 +49,5 @@ services:
       - DJANGO_APP_DB_PORT=5432
       - DJANGO_APP_DB_PASSWORD=3r1qxxu9oiHs2xSRsUr8
     volumes:
-      - ./mamba-backend:/mamba-backend
+      - ./omzbackend:/omzbackend
     command: bash -c "./entrypoint.sh"
