@@ -50,4 +50,5 @@ services:
       - DJANGO_APP_DB_PASSWORD=3r1qxxu9oiHs2xSRsUr8
     volumes:
       - ./omzbackend:/omzbackend
-    command: bash -c "./entrypoint.sh"
+    command: bash -c "sh ./entrypoint.sh"          
+    
