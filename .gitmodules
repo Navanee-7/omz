@@ -1,6 +1,6 @@
-[submodule "omzfrontend"]
-	path = omzfrontend
-	url = https://github.com/aswathi-sivasubramanian/omzfrontend.git
 [submodule "omzbackend"]
 	path = omzbackend
 	url = https://github.com/aswathi-sivasubramanian/omzbackend.git
+[submodule "omzfrontend"]
+	path = omzfrontend
+    url = https://github.com/aswathi-sivasubramanian/omzfrontend.git
