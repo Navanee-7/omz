@@ -1,12 +1,14 @@
 import pandas as pd
 import requests 
 import csv
-from datetime import datetime
+
+#Note: The data is populated when the server was running locally, change the api if needed
+#Note: The data is already pre-processed and check the data availability before running this file
 
 def post_accesspoints():
     
     #Pre-processing
-    preprocess_ap()
+    #preprocess_ap()
     
     accesspoints_file_path = "csv_files/AccessPoints.csv"
     ap_data = pd.read_csv(accesspoints_file_path)
@@ -29,7 +31,7 @@ def post_accesspoints():
 def post_sites():
     
     #Pre-processing
-    preprocess_sites()
+    #preprocess_sites()
     
     sites_file_path = "csv_files/Sites.csv"
     sites_data = pd.read_csv(sites_file_path)
