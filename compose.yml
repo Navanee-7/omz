@@ -26,14 +26,11 @@ services:
     container_name: frontend
     depends_on:
       - backend
-    build:
-      context: ./omzfrontend
-      dockerfile: Dockerfile
+    build: ./omzfrontend
     ports:
       - "3000:3000"
     volumes:
       - ./omzfrontend:/app
-  
   backend:
     container_name: backend
     build: ./omzbackend
